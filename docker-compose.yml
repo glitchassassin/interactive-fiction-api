@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./games:/app/games
+      - ./src:/app/src
+      - ./prisma:/app/prisma
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=file:/app/prisma/dev.db
+      - PORT=3000
+      - HOST=0.0.0.0
+      - GAME_PATH=/app/games
+    command: npm run dev 
