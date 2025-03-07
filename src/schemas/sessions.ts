@@ -34,6 +34,8 @@ export const createSessionResponseSchema = {
 } as const;
 
 export const createSessionSchema = {
+  description: "Create a new interactive fiction game session",
+  tags: ["sessions"],
   body: createSessionBodySchema,
   response: {
     200: createSessionResponseSchema,
@@ -58,6 +60,8 @@ export const commandResponseSchema = {
 } as const;
 
 export const sendCommandSchema = {
+  description: "Send a command to an existing game session",
+  tags: ["sessions"],
   params: sessionIdParam,
   body: commandBodySchema,
   response: {
@@ -98,6 +102,8 @@ export const transcriptResponseSchema = {
 } as const;
 
 export const getTranscriptSchema = {
+  description: "Get the transcript of interactions for a game session",
+  tags: ["sessions"],
   params: sessionIdParam,
   querystring: transcriptQuerystringSchema,
   response: {
